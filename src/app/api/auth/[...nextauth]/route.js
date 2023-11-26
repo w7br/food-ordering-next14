@@ -8,6 +8,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 
+import { SessionProvider } from 'next-auth/react'
+
 import Providers from 'next-auth/providers'
 import { FirebaseAdapter } from '@next-auth/firebase-adapter'
 import firebase from 'firebase/app'
