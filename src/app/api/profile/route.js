@@ -4,7 +4,7 @@ import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 // import mongoose from "mongoose";
 import {getServerSession} from "next-auth";
 
-import firebase from "@/app/libs/firebaseConnection";
+import firebase from "@/libs/firebaseConnection";
 import 'firebase/firestore';
 
 export async function PUT(req) {
