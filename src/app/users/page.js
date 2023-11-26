@@ -9,13 +9,17 @@ export default function UsersPage() {
   const [users, setUsers] = useState([]);
   const {loading,data} = useProfile();
 
-  useEffect(() => {
-    fetch('/api/users').then(response => {
-      response.json().then(users => {
-        setUsers(users);
-      });
-    })
-  }, []);
+  async function fazAlgo(){
+    'use server'
+    
+  }
+  // useEffect(() => {
+  //   fetch('/api/users').then(response => {
+  //     response.json().then(users => {
+  //       setUsers(users);
+  //     });
+  //   })
+  // }, []);
 
   if (loading) {
     return 'Loading user info...';

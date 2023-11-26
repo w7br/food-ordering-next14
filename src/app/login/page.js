@@ -1,21 +1,45 @@
 'use client';
+// import { useContext } from 'react';
 import {signIn} from "next-auth/react";
 import Image from "next/image";
 import {useState} from "react";
+
+import firebase from "@/libs/firebaseConnection";
+import { useAuth } from '@/contexts/authContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginInProgress, setLoginInProgress] = useState(false);
 
+  // const { signIn, loadingAuth } = useContext(AuthContext);
+  const { login } = useAuth()
+
   async function handleFormSubmit(ev) {
     ev.preventDefault();
     setLoginInProgress(true);
-
-    await signIn('credentials', {email, password, callbackUrl: '/'});
-
+    await login(email, password)
     setLoginInProgress(false);
+    history.push("/")
+    // setLoginInProgress(true);
+    // // await signIn({email, password});
+    // setLoginInProgress(false);
   }
+
+  async function handLoginGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    await firebase.auth().signInWithPopup(provider).then((result) => {
+
+    })
+    try {
+      setError("")
+      setLoading(true)
+      history.push("/")
+    } catch {
+      setError("Algo deu errado, tente novamente");
+    }
+  }
+
   return (
     <section className="mt-8">
       <h1 className="text-center text-primary text-4xl mb-4">
@@ -32,7 +56,7 @@ export default function LoginPage() {
         <div className="my-4 text-center text-gray-500">
           or login with provider
         </div>
-        <button type="button" onClick={() => signIn('google', {callbackUrl: '/'})}
+        <button type="button" onClick={() => handLoginGoogle()}
                 className="flex gap-4 justify-center">
           <Image src={'/google.png'} alt={''} width={24} height={24} />
           Login with google
