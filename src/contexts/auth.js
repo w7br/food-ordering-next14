@@ -1,3 +1,4 @@
+'use client'
 import { useState, createContext, useEffect } from "react";
 import firebase from "@/libs/firebaseConnection";
 
