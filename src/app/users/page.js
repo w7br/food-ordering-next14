@@ -9,10 +9,7 @@ export default function UsersPage() {
   const [users, setUsers] = useState([]);
   const {loading,data} = useProfile();
 
-  async function fazAlgo(){
-    'use server'
-    
-  }
+  
   // useEffect(() => {
   //   fetch('/api/users').then(response => {
   //     response.json().then(users => {
