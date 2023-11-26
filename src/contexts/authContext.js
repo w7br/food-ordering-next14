@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth, firebase } from "../firebase"
+import firebase from "@/libs/firebaseConnection";
 
 const AuthContext = React.createContext()
 export function useAuth() {
@@ -9,16 +9,16 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password)
+    return firebase.createUserWithEmailAndPassword(email, password)
   }
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password)
+    return firebase.signInWithEmailAndPassword(email, password)
   }
   function logout() {
-    return auth.signOut()
+    return firebase.signOut()
   }
   function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email)
+    return firebase.sendPasswordResetEmail(email)
   }
   function updateEmail(email) {
     return currentUser.updateEmail(email)
@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = firebase.onAuthStateChanged(user => {
       setCurrentUser(user)
       setLoading(false)
     })
@@ -47,7 +47,7 @@ export function AuthProvider({ children }) {
   async function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
 
-    const result = await auth.signInWithPopup(provider);
+    const result = await firebase.signInWithPopup(provider);
 
     if (result.user) {
       const { displayName, photoURL, uid } = result.user
