@@ -4,6 +4,9 @@ import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 import { getFirestore } from "firebase/firestore";
 import firebase from "firebase/app";
 
+import { SessionProvider } from 'next-auth/react';
+
+
 // Inicialize o Firebase
 if (!firebase.apps.length) {
   firebase.initializeApp({
