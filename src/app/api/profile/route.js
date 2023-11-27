@@ -4,8 +4,8 @@ import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 // import mongoose from "mongoose";
 import {getServerSession} from "next-auth";
 
-import firebase from "@/libs/firebaseConnection";
-import 'firebase/firestore';
+// import firebase from "@/libs/firebaseConnection";
+// import 'firebase/firestore';
 
 export async function PUT(req) {
   // mongoose.connect(process.env.MONGO_URL);
@@ -29,22 +29,22 @@ export async function PUT(req) {
 }
 
 export async function GET(req) {
-  await firebase.firestore().collection('users')
-    .doc(user.uid)
-    .update({
-      btc: Number(user.bitcoin),
-      usd: Number(user.dollar),
-      eur: Number(user.euro),
-      brl: Number(user.real)
-    })
-    .then(()=>{
-      //toast.success("Valores processados com sucessco junto ao cofre!");
-      getProfileInfo(user);
-    })
-    .catch((err) =>{
-      //toast.error("Ops, erro ao atualizar o cofre!");
-      console.log(err);
-    })
+  // await firebase.firestore().collection('users')
+  //   .doc(user.uid)
+  //   .update({
+  //     btc: Number(user.bitcoin),
+  //     usd: Number(user.dollar),
+  //     eur: Number(user.euro),
+  //     brl: Number(user.real)
+  //   })
+  //   .then(()=>{
+  //     //toast.success("Valores processados com sucessco junto ao cofre!");
+  //     getProfileInfo(user);
+  //   })
+  //   .catch((err) =>{
+  //     //toast.error("Ops, erro ao atualizar o cofre!");
+  //     console.log(err);
+  //   })
   return;
   // mongoose.connect(process.env.MONGO_URL);
   // const url = new URL(req.url);
