@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    transpilePackages: [
+      '@next-auth/firebase-adapter'
+    ]
+  },
   images: {
     remotePatterns: [
       {
