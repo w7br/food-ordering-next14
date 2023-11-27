@@ -1216,10 +1216,10 @@
   dependencies:
     sparse-bitfield "^3.0.3"
 
-"@next-auth/firebase-adapter@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/@next-auth/firebase-adapter/-/firebase-adapter-2.0.1.tgz"
-  integrity sha512-4bQTa+IU8/I/mSOQcnrpQ9BYM6Xpk5BJx1TrxDpk4xKl2z0ZKE7Un+yl+U/9crmfpTvCoLOh6j9axmJMacJV2w==
+"@next-auth/firebase-adapter@^0.0.2-canary.207":
+  version "0.0.2-canary.207"
+  resolved "https://registry.npmjs.org/@next-auth/firebase-adapter/-/firebase-adapter-0.0.2-canary.207.tgz"
+  integrity sha512-P+F3V0YGmV24SacGfOuBBSqeZRrfVSg3XVJ33/u6xb6BH4As7BowCcT012F73KZoT/LkkZUSpj4hJvlzhGI+hg==
 
 "@next/env@14.0.0":
   version "14.0.0"
