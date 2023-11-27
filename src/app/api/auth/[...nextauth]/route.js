@@ -22,11 +22,7 @@ const firebaseConfig = {
   measurementId: "G-K7V90ZTQDM"
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig, "uniqueAppName");
-} else {
-  firebase.app("uniqueAppName");
-}
+const app = initializeApp(firebaseConfig);
 
 
 // Inicialize o Firebase
