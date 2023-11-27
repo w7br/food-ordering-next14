@@ -18,8 +18,15 @@ const firebaseConfig = {
   measurementId: "G-K7V90ZTQDM"
 };
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig, "uniqueAppName");
+} else {
+  firebase.app("uniqueAppName");
+}
+
+
 // Inicialize o Firebase
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 
 // Agora você pode usar os serviços do Firebase
 const auth = getAuth(app);
