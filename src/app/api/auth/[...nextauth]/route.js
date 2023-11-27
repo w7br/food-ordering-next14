@@ -21,9 +21,7 @@ const firebaseConfig = {
 
 // Inicialize o Firebase
 if (!firebase.apps.length) {
-  firebase.initializeApp({
-    // suas configurações do Firebase
-  });
+  firebase.initializeApp(firebaseConfig);
 } else {
   firebase.app();
 }
