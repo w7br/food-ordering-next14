@@ -1,9 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import CredentialsProvider from "next-auth/providers/credentials";
 import { getFirestore } from "firebase/firestore";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 
 const firebaseConfig = {
@@ -22,9 +22,9 @@ const app = initializeApp(firebaseConfig);
 
 // Agora você pode usar os serviços do Firebase
 const auth = getAuth(app);
-const firestore = getFirestore();
+const firestore = getFirestore(app);
 
-export const authOptions = {
+export default NextAuth({
     secret: process.env.SECRET,
     adapter: FirebaseAdapter(firestore),
     providers: [
@@ -34,7 +34,6 @@ export const authOptions = {
       }),
       CredentialsProvider({
         name: 'Credentials',
-        id: 'credentials',
         credentials: {
           username: { label: "Email", type: "email", placeholder: "test@example.com" },
           password: { label: "Password", type: "password" },
@@ -55,7 +54,8 @@ export const authOptions = {
         }
       })
     ],
-  };
+  });
+
 
 
 
