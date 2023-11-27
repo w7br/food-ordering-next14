@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
@@ -34,6 +33,7 @@ export const authOptions = {
       }),
       CredentialsProvider({
         name: 'Credentials',
+        id: 'credentials',
         credentials: {
           username: { label: "Email", type: "email", placeholder: "test@example.com" },
           password: { label: "Password", type: "password" },
@@ -55,6 +55,7 @@ export const authOptions = {
       })
     ],
   };
+
 
 
 
