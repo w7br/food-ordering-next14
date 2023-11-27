@@ -4,6 +4,17 @@ import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 import { getFirestore } from "firebase/firestore";
 import firebase from "firebase/app";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
+  authDomain: "voleggio2.firebaseapp.com",
+  databaseURL: "https://voleggio2-default-rtdb.firebaseio.com",
+  projectId: "voleggio2",
+  storageBucket: "voleggio2.appspot.com",
+  messagingSenderId: "169850048518",
+  appId: "1:169850048518:web:40e4f13ce5a6a755bef387",
+  measurementId: "G-K7V90ZTQDM"
+};
+
 // Inicialize o Firebase
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -15,39 +26,38 @@ if (!firebase.apps.length) {
 
 const firestore = getFirestore();
 
-export default NextAuth({
-  secret: process.env.SECRET,
-  providers: [
-    GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-          }),
-          CredentialsProvider({
-            name: 'Credentials',
-            id: 'credentials',
-            credentials: {
-              username: { label: "Email", type: "email", placeholder: "test@example.com" },
-              password: { label: "Password", type: "password" },
-            },
-      async authorize(credentials) {
-        // const email = credentials?.email;
-        // const password = credentials?.password;
-
-        // mongoose.connect(process.env.MONGO_URL);
-        // const user = await User.findOne({email});
-        // const passwordOk = user && bcrypt.compareSync(password, user.password);
-
-        // if (passwordOk) {
-        //   return user;
-        // }
-
-        // return null 
-        console.log("ATENTICAÇÃO AUTORIZADA COM SUCESSO!")
-      },
-    }),
-  ],
-  adapter: FirebaseAdapter(firestore),
-});
+export const authOptions = {
+    secret: process.env.SECRET,
+    adapter: FirebaseAdapter(firestore),
+    providers: [
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      }),
+      CredentialsProvider({
+        name: 'Credentials',
+        id: 'credentials',
+        credentials: {
+          username: { label: "Email", type: "email", placeholder: "test@example.com" },
+          password: { label: "Password", type: "password" },
+        },
+        async authorize(credentials, req) {
+          // const email = credentials?.email;
+          // const password = credentials?.password;
+  
+          // mongoose.connect(process.env.MONGO_URL);
+          // const user = await User.findOne({email});
+          // const passwordOk = user && bcrypt.compareSync(password, user.password);
+  
+          // if (passwordOk) {
+          //   return user;
+          // }
+  
+          return null
+        }
+      })
+    ],
+  };
 
 
 export async function isAdmin() {
