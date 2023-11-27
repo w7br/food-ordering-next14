@@ -1,7 +1,7 @@
 import NextAuth, {getServerSession} from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
-
+import CredentialsProvider from "next-auth/providers/credentials";
 import { getFirestore } from "firebase/firestore";
 
 import firebase from 'firebase/compat/app';
