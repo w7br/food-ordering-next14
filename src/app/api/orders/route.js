@@ -3,7 +3,7 @@ import {Order} from "@/models/Order";
 import mongoose from "mongoose";
 import {getServerSession} from "next-auth";
 
-export async function GET(req, res) {
+export async function GET(req) {
   // mongoose.connect(process.env.MONGO_URL);
 
   // const session = await getServerSession(authOptions);
@@ -24,6 +24,6 @@ export async function GET(req, res) {
   // if (userEmail) {
   //   return Response.json( await Order.find({userEmail}) );
   // }
-  res.status(200).json({ name: 'John Doe' })
+  return Response.json( 'vai que vai. mete marcha como diz os manows haha' );
 
 }

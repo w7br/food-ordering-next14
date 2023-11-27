@@ -10,4 +10,5 @@ export async function GET() {
   // } else {
   //   return Response.json([]);
   // }
+  return Response.json([]);
 }
