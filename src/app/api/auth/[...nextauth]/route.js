@@ -1,13 +1,9 @@
-import NextAuth, {getServerSession} from "next-auth";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { getFirestore } from "firebase/firestore";
-
-import {firebase} from 'firebase/app';
-import 'firebase/auth';
-import "firebase/firestore"
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
@@ -21,12 +17,10 @@ const firebaseConfig = {
 };
 
 // Inicialize o Firebase
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-} else {
-  firebase.app();
-}
+const app = initializeApp(firebaseConfig);
 
+// Agora você pode usar os serviços do Firebase
+const auth = getAuth(app);
 const firestore = getFirestore();
 
 export const authOptions = {
@@ -61,6 +55,7 @@ export const authOptions = {
       })
     ],
   };
+
 
 
 export async function isAdmin() {
