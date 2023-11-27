@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [loginInProgress, setLoginInProgress] = useState(false);
 
   // const { signIn, loadingAuth } = useContext(AuthContext);
-  const { login } = useAuth()
+  // const { login } = useAuth()
 
   async function handleFormSubmit(ev) {
     ev.preventDefault();
