@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
+
 import { getFirestore } from "firebase/firestore";
 
 import firebase from 'firebase/compat/app';
@@ -46,7 +47,7 @@ export const authOptions = {
         },
         async authorize(credentials, req) {
           // const email = credentials?.email;
-          // const password = credentials?.password;
+          // const password = credentials?.password; 
   
           // mongoose.connect(process.env.MONGO_URL);
           // const user = await User.findOne({email});
