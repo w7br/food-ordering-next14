@@ -4,7 +4,7 @@ import {signIn} from "next-auth/react";
 import Image from "next/image";
 import {useState} from "react";
 
-import firebase from "@/libs/firebaseConnection";
+// import firebase from "@/libs/firebaseConnection";
 import { useAuth } from '@/contexts/authContext';
 
 export default function LoginPage() {
