@@ -2,7 +2,7 @@ import {isAdmin} from "@/app/api/auth/[...nextauth]/route";
 import {Category} from "@/models/Category";
 import mongoose from "mongoose";
 
-import firebase from "@/libs/firebaseConnection";
+// import firebase from "@/libs/firebaseConnection";
 
 export async function POST(req) {
   // mongoose.connect(process.env.MONGO_URL);
