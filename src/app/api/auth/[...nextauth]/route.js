@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import GoogleProvider from "next-auth/providers/google";
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 import { getFirestore } from "firebase/firestore";
 import firebase from "firebase/app";
@@ -16,18 +17,19 @@ if (!firebase.apps.length) {
 const firestore = getFirestore();
 
 export default NextAuth({
+  secret: process.env.SECRET,
   providers: [
-    Providers.Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    Providers.Credentials({
-      name: "Credentials",
-      id: 'credentials',
-      credentials: {
-        username: { label: "Email", type: "email", placeholder: "test@example.com" },
-        password: { label: "Password", type: "password" },
-      },
+    GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+          }),
+          CredentialsProvider({
+            name: 'Credentials',
+            id: 'credentials',
+            credentials: {
+              username: { label: "Email", type: "email", placeholder: "test@example.com" },
+              password: { label: "Password", type: "password" },
+            },
       async authorize(credentials) {
         // const email = credentials?.email;
         // const password = credentials?.password;
