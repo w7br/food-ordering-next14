@@ -24,7 +24,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
-export default NextAuth({
+export const authOptions = {
     secret: process.env.SECRET,
     adapter: FirebaseAdapter(firestore),
     providers: [
@@ -54,7 +54,7 @@ export default NextAuth({
         }
       })
     ],
-  });
+  };
 
 
 
