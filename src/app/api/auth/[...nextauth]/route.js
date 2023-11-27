@@ -40,7 +40,7 @@ export default NextAuth({
         //   return user;
         // }
 
-        // return null
+        // return null 
         console.log("ATENTICAÇÃO AUTORIZADA COM SUCESSO!")
       },
     }),
