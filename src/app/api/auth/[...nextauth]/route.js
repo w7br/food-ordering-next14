@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { getFirestore } from "firebase/firestore";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
