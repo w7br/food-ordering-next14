@@ -6,10 +6,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 import NextAuth from "next-auth";
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import "firebase/firestore"
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
@@ -22,15 +18,15 @@ const firebaseConfig = {
   measurementId: "G-K7V90ZTQDM"
 };
 
-const app = initializeApp(firebaseConfig);
 
 
 // Inicialize o Firebase
-// const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Agora você pode usar os serviços do Firebase
-const auth = getAuth(app);
-const firestore = getFirestore(app);
+export const auth = getAuth(app);
+export const firestore = getFirestore(app);
+export default app;
 
 export const authOptions = {
     secret: process.env.SECRET,
@@ -84,8 +80,8 @@ export async function isAdmin() {
 }
 
 const handler = NextAuth(authOptions);
-export default app;
 export { handler as GET, handler as POST }
+
 
 
 // import clientPromise from "@/libs/mongoConnect";
