@@ -1,7 +1,7 @@
 'use client';
 // import { useContext } from 'react';
-// import {signIn} from "next-auth/react";
-import { signIn } from 'next-auth/client'
+import {signIn} from "next-auth/react";
+// import { signIn } from 'next-auth/client'
 import Image from "next/image";
 import {useState} from "react";
 
