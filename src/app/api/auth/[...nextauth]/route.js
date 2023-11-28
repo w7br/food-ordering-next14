@@ -1,89 +1,118 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { FirebaseAdapter } from "@next-auth/firebase-adapter";
 import NextAuth from "next-auth";
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
-  authDomain: "voleggio2.firebaseapp.com",
-  databaseURL: "https://voleggio2-default-rtdb.firebaseio.com",
-  projectId: "voleggio2",
-  storageBucket: "voleggio2.appspot.com",
-  messagingSenderId: "169850048518",
-  appId: "1:169850048518:web:40e4f13ce5a6a755bef387",
-  measurementId: "G-K7V90ZTQDM"
-};
-
-
-
-let app;
-let auth;
-let firestore;
-
-(async function initializeFirebase() {
-  app = await initializeApp(firebaseConfig);
-  auth = await getAuth(app);
-  firestore = await getFirestore(app);
-})();
-
-export { app, auth, firestore };
+import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
-    secret: process.env.SECRET,
-    adapter: FirebaseAdapter(firestore),
-    providers: [
-      GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      }),
-      CredentialsProvider({
-        name: 'Credentials',
-        credentials: {
-          username: { label: "Email", type: "email", placeholder: "test@example.com" },
-          password: { label: "Password", type: "password" },
-        },
-        async authorize(credentials, req) {
-          // const email = credentials?.email;
-          // const password = credentials?.password; 
+  providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+    }),
+  ],
+};
+
+export const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };
+
+
+
+
+
+// import { initializeApp } from "firebase/app";
+// import { getAuth } from "firebase/auth";
+// import { getFirestore } from "firebase/firestore";
+// import GoogleProvider from "next-auth/providers/google";
+// import CredentialsProvider from "next-auth/providers/credentials";
+// import { FirebaseAdapter } from "@next-auth/firebase-adapter";
+// import NextAuth from "next-auth";
+
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
+//   authDomain: "voleggio2.firebaseapp.com",
+//   databaseURL: "https://voleggio2-default-rtdb.firebaseio.com",
+//   projectId: "voleggio2",
+//   storageBucket: "voleggio2.appspot.com",
+//   messagingSenderId: "169850048518",
+//   appId: "1:169850048518:web:40e4f13ce5a6a755bef387",
+//   measurementId: "G-K7V90ZTQDM"
+// };
+
+
+
+// let app;
+// let auth;
+// let firestore;
+
+// (async function initializeFirebase() {
+//   app = await initializeApp(firebaseConfig);
+//   auth = await getAuth(app);
+//   firestore = await getFirestore(app);
+// })();
+
+// export { app, auth, firestore };
+
+// export const authOptions = {
+//     secret: process.env.SECRET,
+//     adapter: FirebaseAdapter(firestore),
+//     providers: [
+//       GoogleProvider({
+//         clientId: process.env.GOOGLE_CLIENT_ID,
+//         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//       }),
+//       CredentialsProvider({
+//         name: 'Credentials',
+//         credentials: {
+//           username: { label: "Email", type: "email", placeholder: "test@example.com" },
+//           password: { label: "Password", type: "password" },
+//         },
+//         async authorize(credentials, req) {
+//           // const email = credentials?.email;
+//           // const password = credentials?.password; 
   
-          // mongoose.connect(process.env.MONGO_URL);
-          // const user = await User.findOne({email});
-          // const passwordOk = user && bcrypt.compareSync(password, user.password);
+//           // mongoose.connect(process.env.MONGO_URL);
+//           // const user = await User.findOne({email});
+//           // const passwordOk = user && bcrypt.compareSync(password, user.password);
   
-          // if (passwordOk) {
-          //   return user;
-          // }
+//           // if (passwordOk) {
+//           //   return user;
+//           // }
   
-          return null
-        }
-      })
-    ],
-  };
+//           return null
+//         }
+//       })
+//     ],
+//   };
 
 
 
 
 
-export async function isAdmin() {
-    // const session = await getServerSession(authOptions);
-    // const userEmail = session?.user?.email;
-    // if (!userEmail) {
-    //   return false;
-    // }
-    // const userInfo = await UserInfo.findOne({email:userEmail});
-    // if (!userInfo) {
-    //   return false;
-    // }
-    // return userInfo.admin;
-    return false;
-}
+// export async function isAdmin() {
+//     // const session = await getServerSession(authOptions);
+//     // const userEmail = session?.user?.email;
+//     // if (!userEmail) {
+//     //   return false;
+//     // }
+//     // const userInfo = await UserInfo.findOne({email:userEmail});
+//     // if (!userInfo) {
+//     //   return false;
+//     // }
+//     // return userInfo.admin;
+//     return false;
+// }
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST }
+// const handler = NextAuth(authOptions);
+// export { handler as GET, handler as POST }
+
+
+
+
 
 
 
