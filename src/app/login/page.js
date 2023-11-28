@@ -5,9 +5,9 @@ import Image from "next/image";
 import {useState} from "react";
 
 // import firebase from "@/libs/firebaseConnection";
-import firebase, { auth, firestore } from "@/app/api/auth/[...nextauth]/route";
+import { app, auth, firestore } from "@/app/api/auth/[...nextauth]/route";
 
-import { useAuth } from '@/contexts/authContext';
+// import { useAuth } from '@/contexts/authContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -29,8 +29,8 @@ export default function LoginPage() {
   }
 
   async function handLoginGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    await firebase.auth().signInWithPopup(provider).then((result) => {
+    const provider = new auth.GoogleAuthProvider();
+    await auth.signInWithPopup(provider).then((result) => {
 
     })
     try {

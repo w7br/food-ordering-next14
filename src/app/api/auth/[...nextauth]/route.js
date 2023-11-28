@@ -20,13 +20,17 @@ const firebaseConfig = {
 
 
 
-// Inicialize o Firebase
-const app = initializeApp(firebaseConfig);
+let app;
+let auth;
+let firestore;
 
-// Agora você pode usar os serviços do Firebase
-export const auth = getAuth(app);
-export const firestore = getFirestore(app);
-export default app;
+(async function initializeFirebase() {
+  app = await initializeApp(firebaseConfig);
+  auth = await getAuth(app);
+  firestore = await getFirestore(app);
+})();
+
+export { app, auth, firestore };
 
 export const authOptions = {
     secret: process.env.SECRET,
