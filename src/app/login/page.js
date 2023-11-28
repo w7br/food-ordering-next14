@@ -5,7 +5,7 @@ import Image from "next/image";
 import {useState} from "react";
 
 // import firebase from "@/libs/firebaseConnection";
-import firebase, { auth, firestore } from "@/app/api/auth/[...nextauth]";
+import firebase, { auth, firestore } from "@/app/api/auth/[...nextauth]/route";
 
 import { useAuth } from '@/contexts/authContext';
 
