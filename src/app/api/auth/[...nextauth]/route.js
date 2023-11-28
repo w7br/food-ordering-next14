@@ -5,8 +5,8 @@ import { FirebaseAdapter } from '@next-auth/firebase-adapter';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import {firebase} from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 // Sua configuração do Firebase
 const firebaseConfig = {
