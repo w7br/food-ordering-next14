@@ -5,6 +5,8 @@ import {signIn} from "next-auth/react";
 import Image from "next/image";
 import {useState} from "react";
 
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
 // import firebase from "@/libs/firebaseConnection";
 // import { app, auth, firestore } from "@/app/api/auth/[...nextauth]/route";
 
@@ -30,15 +32,18 @@ export default function LoginPage() {
   }
 
   async function handLoginGoogle() {
-    const provider = new auth.GoogleAuthProvider();
-    await auth.signInWithPopup(provider).then((result) => {
-
-    })
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+  
     try {
-      setError("")
-      setLoading(true)
-      history.push("/")
-    } catch {
+      const result = await signInWithPopup(auth, provider);
+      // Você pode usar o objeto 'result' para acessar as informações do usuário
+      console.log(result.user);
+  
+      // Redireciona para a página inicial
+      history.push("/");
+    } catch (error) {
+      console.error("Ocorreu um erro durante o login", error);
       setError("Algo deu errado, tente novamente");
     }
   }
