@@ -1,75 +1,75 @@
-// import NextAuth from 'next-auth'
-// import { FirebaseAdapter } from '@next-auth/firebase-adapter';
-// import { initializeApp } from 'firebase/app';
-// import GoogleProvider from "next-auth/providers/google";
-// import CredentialsProvider from "next-auth/providers/credentials";
-// import { getFirestore } from 'firebase/firestore';
-
-// import 'firebase/auth';
-
-// // Sua configuração do Firebase
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
-//   authDomain: "voleggio2.firebaseapp.com",
-//   databaseURL: "https://voleggio2-default-rtdb.firebaseio.com",
-//   projectId: "voleggio2",
-//   storageBucket: "voleggio2.appspot.com",
-//   messagingSenderId: "169850048518",
-//   appId: "1:169850048518:web:40e4f13ce5a6a755bef387",
-//   measurementId: "G-K7V90ZTQDM"
-// };
-
-// // Inicialize o Firebase
-// const app = initializeApp(firebaseConfig);
-// const firestore = getFirestore(app)
-
-// export default NextAuth({
-//   providers: [
-//     GoogleProvider({
-//               clientId: process.env.GOOGLE_CLIENT_ID,
-//               clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//             }),
-//             CredentialsProvider({
-//               name: 'Credentials',
-//               credentials: {
-//                 username: { label: "Email", type: "email", placeholder: "test@example.com" },
-//                 password: { label: "Password", type: "password" },
-//               },
-//               async authorize(credentials, req) {
-//                 const user = await findUserInDatabase(credentials.username, credentials.password);
-//                 if (user) {
-//                   return user;
-//                 } else {
-//                   throw new Error('Invalid username or password');
-//                 }
-//               }
-//             })
-//   ],
-//   adapter: FirebaseAdapter(firestore),
-// })
-
-
-
-import NextAuth from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
+import NextAuth from 'next-auth'
+import { FirebaseAdapter } from '@next-auth/firebase-adapter';
+import { initializeApp } from 'firebase/app';
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { getFirestore } from 'firebase/firestore';
 
-export const authOptions = {
-  providers: [
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID ?? "",
-      clientSecret: process.env.GITHUB_SECRET ?? "",
-    }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
-    }),
-  ],
+import 'firebase/auth';
+
+// Sua configuração do Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
+  authDomain: "voleggio2.firebaseapp.com",
+  databaseURL: "https://voleggio2-default-rtdb.firebaseio.com",
+  projectId: "voleggio2",
+  storageBucket: "voleggio2.appspot.com",
+  messagingSenderId: "169850048518",
+  appId: "1:169850048518:web:40e4f13ce5a6a755bef387",
+  measurementId: "G-K7V90ZTQDM"
 };
 
-export const handler = NextAuth(authOptions);
+// Inicialize o Firebase
+const app = initializeApp(firebaseConfig);
+const firestore = getFirestore(app)
 
-export { handler as GET, handler as POST };
+export default NextAuth({
+  providers: [
+    GoogleProvider({
+              clientId: process.env.GOOGLE_CLIENT_ID,
+              clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            }),
+            CredentialsProvider({
+              name: 'Credentials',
+              credentials: {
+                username: { label: "Email", type: "email", placeholder: "test@example.com" },
+                password: { label: "Password", type: "password" },
+              },
+              async authorize(credentials, req) {
+                const user = await findUserInDatabase(credentials.username, credentials.password);
+                if (user) {
+                  return user;
+                } else {
+                  throw new Error('Invalid username or password');
+                }
+              }
+            })
+  ],
+  adapter: FirebaseAdapter(firestore),
+})
+
+
+
+// import NextAuth from "next-auth";
+// import GitHubProvider from "next-auth/providers/github";
+// import GoogleProvider from "next-auth/providers/google";
+
+// export const authOptions = {
+//   providers: [
+//     GitHubProvider({
+//       clientId: process.env.GITHUB_ID ?? "",
+//       clientSecret: process.env.GITHUB_SECRET ?? "",
+//     }),
+//     GoogleProvider({
+//       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+//       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+//     }),
+//   ],
+// };
+
+// export const handler = NextAuth(authOptions);
+
+// export { handler as GET, handler as POST };
 
 
 
