@@ -5,6 +5,9 @@ import { FirebaseAdapter } from '@next-auth/firebase-adapter';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 // Sua configuração do Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
@@ -18,7 +21,7 @@ const firebaseConfig = {
 };
 
 // Inicialize o Firebase
-const app = initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
 const firestore = getFirestore(app)
 
 export default NextAuth({
