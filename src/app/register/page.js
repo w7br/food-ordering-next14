@@ -70,8 +70,8 @@ export default function RegisterPage() {
           Entrar com Google
         </button>
         <div className="text-center my-4 text-gray-500 border-t pt-4">
-          Existing account?{' '}
-          <Link className="underline" href={'/login'}>Login here &raquo;</Link>
+          Já possui uma conta?{' '}
+          <Link className="underline" href={'/login'}>Acesse aqui &raquo;</Link>
         </div>
       </form>
     </section>
