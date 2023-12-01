@@ -35,13 +35,11 @@ export default function RegisterPage() {
   return (
     <section className="mt-8">
       <h1 className="text-center text-primary text-4xl mb-4">
-        Registre-se
+        Criar Conta
       </h1>
       {!loadingAuth && (
         <div className="my-4 text-center">
-          Se já tiver uma conta<br />
-          Acesse-a por aqui{' '}
-          <Link className="underline" href={'/login'}>Login &raquo;</Link>
+          Ao registrar uma conta, poderá realizar pedidos e receber no conforto de seu lar!
         </div>
       )}
       {error && (
