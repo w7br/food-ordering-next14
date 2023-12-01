@@ -9,14 +9,14 @@ import 'firebase/auth';
 
 // Sua configuração do Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyCQ8BepZRTgUwe50TZGC8gIAeMExac0Vno",
-  authDomain: "voleggio2.firebaseapp.com",
-  databaseURL: "https://voleggio2-default-rtdb.firebaseio.com",
-  projectId: "voleggio2",
-  storageBucket: "voleggio2.appspot.com",
-  messagingSenderId: "169850048518",
-  appId: "1:169850048518:web:40e4f13ce5a6a755bef387",
-  measurementId: "G-K7V90ZTQDM"
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_DATABASEURL,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID
 };
 
 // Inicialize o Firebase
@@ -26,8 +26,8 @@ const firestore = getFirestore(app)
 export default NextAuth({
   providers: [
     GoogleProvider({
-              clientId: process.env.GOOGLE_CLIENT_ID,
-              clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+              clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+              clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
             }),
             CredentialsProvider({
               name: 'Credentials',

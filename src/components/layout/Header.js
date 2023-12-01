@@ -11,7 +11,7 @@ function AuthLinks({status, userName}) {
     return (
       <>
         <Link href={'/profile'} className="whitespace-nowrap">
-          Hello, {userName}
+          Olá, {userName}
         </Link>
         <button
           onClick={() => signOut()}
@@ -26,7 +26,7 @@ function AuthLinks({status, userName}) {
       <>
         <Link href={'/login'}>Login</Link>
         <Link href={'/register'} className="bg-primary rounded-full text-white px-8 py-2">
-          Register
+          Registre-se
         </Link>
       </>
     );
@@ -47,7 +47,7 @@ export default function Header() {
     <header>
       <div className="flex items-center md:hidden justify-between">
         <Link className="text-primary font-semibold text-2xl" href={'/'}>
-          ST PIZZA
+          PIZZA DELIVERY
         </Link>
         <div className="flex gap-8 items-center">
           <Link href={'/cart'} className="relative">
@@ -79,7 +79,7 @@ export default function Header() {
       <div className="hidden md:flex items-center justify-between">
         <nav className="flex items-center gap-8 text-gray-500 font-semibold">
           <Link className="text-primary font-semibold text-2xl" href={'/'}>
-            ST PIZZA
+            PIZZA DELIVERY
           </Link>
           <Link href={'/'}>Home</Link>
           <Link href={'/menu'}>Menu</Link>
