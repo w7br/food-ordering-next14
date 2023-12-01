@@ -20,6 +20,9 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <title>PIZZA DELIVERY</title>
+      </head>
       <body className={roboto.className}>
         <main className="max-w-4xl mx-auto p-4">
           <SessionProvider session={session}>
