@@ -39,8 +39,8 @@ export default function RegisterPage() {
       </h1>
       {!loadingAuth && (
         <div className="my-4 text-center">
-          Usuário criado com sucesso.<br />
-          Agora acesse{' '}
+          Se já tiver uma conta<br />
+          Acesse-a por aqui{' '}
           <Link className="underline" href={'/login'}>Login &raquo;</Link>
         </div>
       )}
