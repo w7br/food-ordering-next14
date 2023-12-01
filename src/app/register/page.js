@@ -39,7 +39,7 @@ export default function RegisterPage() {
       </h1>
       {!loadingAuth && (
         <div className="my-4 text-center">
-          Ao registrar uma conta, poderá realizar pedidos e receber no conforto de seu lar!
+          Ao registrar uma conta, poderá realizar<br /> pedidos e receber no conforto de seu lar!
         </div>
       )}
       {error && (
