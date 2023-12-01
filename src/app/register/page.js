@@ -61,7 +61,7 @@ export default function RegisterPage() {
           Registre-se
         </button>
         <div className="my-4 text-center text-gray-500">
-          ou com o provedor
+          você também pode
         </div>
         <button
           onClick={() => signIn('google', {callbackUrl:'/'})}
